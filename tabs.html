@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .tab {
+      width: 700px;
+      height: 50px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+
+    .tabBtn {
+      padding: 0 20px;
+      margin: 0;
+      line-height: 48px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .tabBtn:hover {
+      background-color: #ddd;
+    }
+    .tabBtn.active {
+      background-color: #ddd;
+    }
+
+    .content {
+      width: 700px;
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-top: 1px solid #fff;
+      display: none;
+    }
+    .content.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Tabs</h3>
+  <p>Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects:</p>
+  <div class="tab">
+    <button class="tabBtn active">London</button>
+    <button class="tabBtn">Paris</button>
+    <button class="tabBtn">Tokyo</button>
+  </div>
+
+  <div id="London" class="content active">
+    <h3>London</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, accusamus?</p>
+  </div>
+  <div id="Paris" class="content">
+    <h3>Paris</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, accusamus?</p>
+  </div>
+  <div id="Tokyo" class="content">
+    <h3>Tokyo</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, accusamus?</p>
+  </div>
+
+  <script>
+    const tabBtn = document.querySelectorAll(".tabBtn");
+    const content = document.querySelectorAll(".content");
+
+    // const tab = document.querySelectorAll(".tabBtn");
+    // const content = document.querySelectorAll(".content");
+
+    // function showCont(e, city){
+    //   for (let i = 0; i < content.length; i++){
+    //     content[i].style.display = "none";
+    //   }
+
+    //   for(let i = 0; i < tab.length; i++){
+    //     tab[i].className = tab[i].className.replace(" active", "");
+    //   }
+
+    //   document.getElementById(city).style.display = "block";
+    //   e.currentTarget.className += " active";
+    // }
+
+    tabBtn.forEach((el, index) => {
+      el.addEventListener("click", function(){
+        document.querySelector("button.active").classList.remove("active");
+        // content 전부 숨기기 
+        content.forEach((cont) => {
+          cont.classList.remove("active");
+        })
+        el.classList.add("active");
+        content[index].classList.add("active");
+      });
+    });
+
+  </script>
+</body>
+
+</html>
