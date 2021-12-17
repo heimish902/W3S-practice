@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #474E5D;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 30px;
+      position: relative;
+    }
+
+    .container::after {
+      content: "";
+      display: block;
+      clear: both;
+      width: 7px;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+    }
+
+    .contents {
+      width: 49%;
+      padding: 10px 40px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .contents::after {
+      content: "";
+      display: block;
+      clear: both;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 25px;
+      right: -25px;
+      border: 5px solid #ff9f55;
+      border-radius: 50%;
+      background-color: #fff;
+      z-index: 1
+    }
+
+    .contents.right::after {
+      left: -15px;
+    }
+    .text {
+      padding: 20px 30px;
+      position: relative;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .text::after {
+      content: "";
+      display: block;
+      clear: both;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 22px;
+      right: -5px;
+      transform: rotate(45deg);
+      background: #fff;
+    }
+    .contents.right .text::after {
+      left: -5px;
+    }
+    .text h1 {
+      margin: 0 0 20px 0;
+      font-size: 32px;
+      font-weight: normal;
+    }
+
+    .text p {
+      font-size: 18px;
+    }
+
+    /* common */
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="contents left">
+      <div class="text">
+        <h1>2021</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam quibusdam ea eius quos porro fugit
+          aspernatur tempore? Distinctio, est? Enim dolore quo atque id voluptatem perferendis fugit mollitia adipisci
+          vel.</p>
+      </div>
+    </div>
+    <div class="contents right">
+      <div class="text">
+        <h1>2020</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, repellat!</p>
+      </div>
+    </div>
+    <div class="contents left">
+      <div class="text">
+        <h1>2019</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi ratione voluptates exercitationem iste ex,
+          aspernatur tempore sunt recusandae! Optio, quidem.</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
