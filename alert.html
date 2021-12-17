@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Alerts</title>
+  <style>
+    .wrap {
+      padding: 20px;
+    }
+
+    .wrap>h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .wrap>p {
+      margin-bottom: 20px;
+    }
+
+    .alerts {
+      position: relative;
+      width: 70%;
+      padding: 20px;
+      height: 60px;
+      margin-bottom: 20px;
+      color: #fff;
+      transition: all 0.5s;
+    }
+
+    .close {
+      position: absolute;
+      font-size: 24px;
+      top: 16px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .danger {
+      background-color: #f44336;
+    }
+
+    .success {
+      background-color: #04AA6D;
+    }
+
+    .info {
+      background-color: #2196F3;
+    }
+
+    .warning {
+      background-color: #ff9800;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h2>Alerts</h2>
+    <p>Alert messages can be used to notify the user about something special: danger, success, information or warning.
+    </p>
+    <div class="alerts danger">
+      <p>Danger! Indicates a dangerous or potentially negative action.</p>
+      <span class="close">&times;</span>
+    </div>
+    <div class="alerts success">
+      <p>Success! Indicates a successful or positive action.</p>
+      <span class="close">&times;</span>
+    </div>
+    <div class="alerts info">
+      <p>Info! Indicates a neutral informative change or action.</p>
+      <span class="close">&times;</span>
+    </div>
+    <div class="alerts warning">
+      <p>Warning! Indicates a warning that might need attention.</p>
+      <span class="close">&times;</span>
+    </div>
+  </div>
+
+  <script>
+    const close = document.querySelectorAll('.close');
+    const wrap = document.querySelector(".wrap");
+
+    close.forEach(el => {
+      el.addEventListener("click", function () {
+        el.parentElement.style.opacity = "0";
+        setTimeout(function () {
+          el.parentElement.style.display = "none";
+        }, 500)
+      })
+    });
+  </script>
+</body>
+
+</html>
