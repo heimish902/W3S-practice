@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Modal Images</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      margin: 20px;
+    }
+
+    .modal {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .modal span {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    .inner {
+      max-width: 700px;
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .big_image {
+      width: 450px;
+      height: auto;
+      animation: zoom 0.5s;
+    }
+
+    .caption {
+      width: 80%;
+      max-width: 700px;
+      margin: 20px auto 0 auto;
+      color: #fff;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(0);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://placeimg.com/300/300/arch" alt="도시">
+
+
+  <div class="modal">
+    <span class="material-icons">close</span>
+    <div class="inner"></div>
+  </div>
+  <script>
+    const modal = document.querySelector(".modal");
+    const inner = document.querySelector(".inner");
+    const img = document.querySelector("img");
+    const close = document.querySelector("span");
+
+    img.addEventListener("click", function () {
+      img.style.display = "none";
+      modal.style.display = "block";
+      inner.innerHTML = "";
+      thum(img);
+      madeCaption(img);
+    });
+
+    // close
+    close.addEventListener("click", function () {
+      modal.style.display = "none";
+      img.style.display = "block";
+    });
+
+    function madeCaption(img) {
+      const caption = document.createElement("div");
+      caption.className = "caption";
+      caption.textContent = img.alt;
+      inner.appendChild(caption);
+    }
+
+    function thum(img) {
+      const image = document.createElement("img");
+      image.className = "big_image";
+      image.src = img.src;
+      inner.appendChild(image);
+    }
+  </script>
+</body>
+
+</html>

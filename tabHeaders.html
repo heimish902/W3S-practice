@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Headers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    ul,
+    li,
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #444;
+    }
+
+    .contents {
+      display: none;
+      width: 500px;
+      padding: 50px 30px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .contents.active {
+      display: block;
+    }
+
+    .tab {
+      width: 500px;
+    }
+
+    .tab ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tab ul li {
+      width: 25%;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: 600;
+      background-color: #eee;
+    }
+
+    li.active a {
+      color: #fff;
+    }
+
+    /*active*/
+    .active.red {
+      background-color: #f44336;
+    }
+
+    .active.blue {
+      background-color: #2196f3;
+    }
+
+    .active.green {
+      background-color: #04aa6d;
+    }
+
+    .active.orange {
+      background-color: #ff5722;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contents red">
+    <h1>London</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  <div class="contents green">
+    <h1>Paris</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  <div class="contents blue active">
+    <h1>Tokyo</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  <div class="contents orange">
+    <h1>Oslo</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  <div class="tab">
+    <ul>
+      <li class="red"><a href="#">London</a></li>
+      <li class="green"><a href="#">Paris</a></li>
+      <li class="blue active"><a href="#">Tokyo</a></li>
+      <li class="orange"><a href="#">Oslo</a></li>
+    </ul>
+  </div>
+  <script>
+    const tab = document.querySelectorAll(".tab li");
+    const contents = document.querySelectorAll(".contents");
+
+    tab.forEach((el, index) => {
+      el.addEventListener("click", function () {
+        document.querySelector("li.active").classList.remove("active");
+
+        contents.forEach(cont => {
+          cont.classList.remove("active");
+        });
+
+        el.classList.add("active");
+        contents[index].classList.add("active");
+      })
+
+    });
+  </script>
+</body>
+
+</html>

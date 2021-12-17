@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Tabs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    ul,
+    li,
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #444;
+    }
+
+    /* ============================ */
+    .tab_btn {
+      width: 150px;
+      height: 300px;
+      background-color: #eee;
+      border: 1px solid #ddd;
+      float: left;
+    }
+
+    .tab_btn li {
+      padding: 20px;
+    }
+
+    .tab_btn li.active {
+      background-color: #ddd;
+    }
+
+    .contents {
+      display: none;
+      width: 350px;
+      height: 300px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      float: left;
+    }
+
+    .contents.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vertical Tabs</h1>
+  <p>Click on the buttons inside the tabbed menu:</p>
+  <div class="tab_btn">
+    <ul>
+      <li class="active"><a href="#">London</a></li>
+      <li><a href="#">Paris</a></li>
+      <li><a href="#">Tokyo</a></li>
+    </ul>
+  </div>
+  <div class="contents active">
+    <h2>London</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, voluptate.</p>
+  </div>
+  <div class="contents">
+    <h2>Paris</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, voluptate.</p>
+  </div>
+  <div class="contents">
+    <h2>Tokyo</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, voluptate.</p>
+  </div>
+  <script>
+    const tabBtn = document.querySelectorAll(".tab_btn li");
+    const contents = document.querySelectorAll(".contents");
+
+    tabBtn.forEach((el, index) => {
+      el.addEventListener("click", function () {
+        document.querySelector(".tab_btn li.active").classList.remove("active");
+
+        contents.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        el.classList.add("active");
+        contents[index].classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>
