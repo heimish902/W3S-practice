@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 500px;
+    }
+
+    input.custom {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 25px;
+      background-color: #d3d3d3;
+      outline: none;
+    }
+
+    /* 
+The slider handle 
+-webkit- (Chrome, Opera, Safari, Edge)
+moz- (Firefox)
+*/
+    input.custom::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background-color: #04aa6d;
+      cursor: pointer;
+    }
+
+    input.custom::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background-color: #04aa6d;
+      cursor: pointer;
+    }
+
+    /* round */
+    input.round {
+      height: 15px;
+      border-radius: 5px;
+    }
+
+    input.round::-webkit-slider-thumb {
+      border-radius: 50%;
+    }
+
+    input.round::-moz-range-thumb {
+      border-radius: 50%;
+    }
+
+    /* image */
+    input.image {
+      height: 15px;
+      border-radius: 5px;
+    }
+
+    input.image::-webkit-slider-thumb {
+      border-radius: 50%;
+      background: url("data:image/svg+xml;base64,PHN2ZyBpZD0idzNfY2VydF9iYWRnZTIiIHN0eWxlPSJtYXJnaW46YXV0bzt3aWR0aDo4NSUiIGRhdGEtbmFtZT0idzNfY2VydF9iYWRnZTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMwMCAzMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDRhYTZiO30uY2xzLTJ7Zm9udC1zaXplOjIzcHg7fS5jbHMtMiwuY2xzLTMsLmNscy00e2ZpbGw6I2ZmZjt9LmNscy0yLC5jbHMtM3tmb250LWZhbWlseTpSb2JvdG9Nb25vLU1lZGl1bSwgUm9ib3RvIE1vbm87Zm9udC13ZWlnaHQ6NTAwO30uY2xzLTN7Zm9udC1zaXplOjIwLjA4cHg7fTwvc3R5bGU+PC9kZWZzPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMTUwIiBjeT0iMTUwIiByPSIxNDYuNDciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02Mi4xMyAxNTApIHJvdGF0ZSgtNDUpIi8+PHRleHQgY2xhc3M9ImNscy0yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5My41NCA2My44OSkgcm90YXRlKC0yOS41KSI+dzwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwNy4xMyA1Ni4zNSkgcm90YXRlKC0yMC44KSI+MzwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0ibWF0cml4KDAuOTgsIC0wLjIxLCAwLjIxLCAwLjk4LCAxMjEuNjgsIDUwLjk3KSI+czwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzNi44OSA0Ny44NCkgcm90YXRlKC0zLjQ3KSI+YzwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE1Mi4zOSA0Ny4wMykgcm90YXRlKDUuMTIpIj5oPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTY3Ljg1IDQ4LjU0KSByb3RhdGUoMTMuNzIpIj5vPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTgyLjg5IDUyLjM1KSByb3RhdGUoMjIuMzQpIj5vPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJtYXRyaXgoMC44NiwgMC41MiwgLTAuNTIsIDAuODYsIDE5Ny4xOCwgNTguMzYpIj5sPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJtYXRyaXgoMC43NywgMC42NCwgLTAuNjQsIDAuNzcsIDIxMC40LCA2Ni40NikiPnM8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNS41MSAxODYuNjYpIHJvdGF0ZSg2OS4zNykiPiA8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjQ3LCAwLjg4LCAtMC44OCwgMC40NywgNDEuMjcsIDIwMS4yOCkiPkM8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjU4LCAwLjgxLCAtMC44MSwgMC41OCwgNDguOTEsIDIxNS4wMykiPkU8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjY3LCAwLjc0LCAtMC43NCwgMC42NywgNTguMTMsIDIyNy4zNikiPlI8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2OS4xNiAyMzguOTIpIHJvdGF0ZSgzOS40NCkiPlQ8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09Im1hdHJpeCgwLjg1LCAwLjUzLCAtMC41MywgMC44NSwgODEuNDcsIDI0OC43MykiPkk8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NC45NCAyNTYuODMpIHJvdGF0ZSgyNC4zNikiPkY8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDkuMzQgMjYzLjA5KSByb3RhdGUoMTYuODMpIj5JPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0LjQ2IDI2Ny40MSkgcm90YXRlKDkuMzQpIj5FPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTM5Ljk5IDI2OS43Mykgcm90YXRlKDEuODgpIj5EPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTU1LjcgMjcwLjAxKSByb3RhdGUoLTUuNTgpIj4gPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTcxLjMyIDI2OC4yNCkgcm90YXRlKC0xMy4wNikiPiA8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0yIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuNTUgMjY2LjgxKSByb3RhdGUoLTIxLjA0KSI+LjwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIwMy4yNyAyNTcuNykgcm90YXRlKC0yOS4yNCkiPiA8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMTYuODQgMjQ5LjgzKSByb3RhdGUoLTM2Ljc1KSI+IDwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyOS4yNiAyNDAuMjYpIHJvdGF0ZSgtNDQuMTUpIj4yPC90ZXh0Pjx0ZXh0IGNsYXNzPSJjbHMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQwLjM5IDIyOS4xMykgcm90YXRlKC01MS42MikiPjA8L3RleHQ+PHRleHQgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNDkuOTcgMjE2LjYzKSByb3RhdGUoLTU5LjE3KSI+MjwvdGV4dD48dGV4dCBjbGFzcz0iY2xzLTMiIHRyYW5zZm9ybT0ibWF0cml4KDAuNCwgLTAuOTIsIDAuOTIsIDAuNCwgMjU3LjgxLCAyMDMuMDQpIj4xPC90ZXh0PjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTE5Ni42NCwxMzYuMzFzMy41MywzLjgsOC41LDMuOGMzLjksMCw2Ljc1LTIuMzcsNi43NS01LjU5LDAtNC0zLjY0LTUuODEtOC01LjgxaC0yLjU5bC0xLjUzLTMuNDgsNi44Ni04LjEzYTM0LjA3LDM0LjA3LDAsMCwxLDIuNy0yLjg1cy0xLjExLDAtMy4zMywwSDE5NC43OXYtNS44NkgyMTcuN3Y0LjI4bC05LjE5LDEwLjYxYzUuMTguNzQsMTAuMjQsNC40MywxMC4yNCwxMC45MnMtNC44NSwxMi4zLTEzLjE5LDEyLjNhMTcuMzYsMTcuMzYsMCwwLDEtMTIuNDEtNVoiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik0xNTIsMTQ0LjI0bDMwLjI0LDUzLjg2LDE0Ljk0LTI2LjYxTDE2OC42LDEyMC42M0gxMzUuMzZsLTEzLjc4LDI0LjUzLTEzLjc3LTI0LjUzSDc3LjkzbDQzLjUsNzcuNDYuMTUtLjI4LjE2LjI4WiIvPjwvc3ZnPg==");
+    }
+
+    input.image::-moz-range-thumb {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="range-container">
+      <p>Default</p>
+      <input type="range" min="1" max="100" value="50">
+    </div>
+    <div class="range-container">
+      <p>Square</p>
+      <input class="square custom" type="range" min="1" max="100" value="50">
+    </div>
+    <div class="range-container">
+      <p>Round</p>
+      <input class="round custom" type="range" min="1" max="100" value="50">
+    </div>
+    <div class="range-container">
+      <p>Image</p>
+      <input class="image custom" type="range" min="1" max="100" value="50">
+    </div>
+    <p class="output">Value : <span>0</span></p>
+  </div>
+
+  <script>
+    let square = document.querySelector(".square");
+    let round = document.querySelector(".round");
+    let image = document.querySelector(".image");
+
+    let output = document.querySelector(".output span");
+
+    output.innerHTML = square.value;
+
+    square.oninput = function () {
+      output.innerHTML = this.value;
+    }
+    round.oninput = function () {
+      output.innerHTML = this.value;
+    }
+    image.oninput = function () {
+      output.innerHTML = this.value;
+    }
+  </script>
+</body>
+
+</html>

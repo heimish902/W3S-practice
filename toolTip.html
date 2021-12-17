@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip</title>
+  <style>
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    .tooltip {
+      margin-top: 50px;
+      border-bottom: 1px dotted;
+      position: relative;
+    }
+    .tooltip .text {
+      opacity: 0;
+      position: absolute;
+      top: -40px;
+      left: -30px;
+      width: 100px;
+      height: 25px;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #555555;
+      transition: all 1s;
+    }
+    .tooltip .text::after {
+      content: '';
+      display: block;
+      clear: both;
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      background: #555;
+      z-index: -1;
+    }
+    .tooltip .text.right {
+      top: 0;
+      left: 60px;
+    }
+    .tooltip .text.right::after {
+      left: 0;
+      top: 40%;
+    }
+    .tooltip .text.bottom {
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .tooltip .text.bottom::after {
+      left: 50%;
+      top: -2px;
+    }
+    .tooltip .text.left {
+      top: 0;
+      left: -120px;
+    }
+    .tooltip .text.left::after {
+      left: 100px;
+      top: 40%;
+    }
+    .tooltip:hover .text{
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="tooltip">
+      Tool
+      <span class="text">Tooltip text</span>
+    </div>
+    <div class="tooltip">
+      Right
+      <span class="text right">Tooltip text</span>
+    </div>
+    <div class="tooltip">
+      Bottom
+      <span class="text bottom">Tooltip text</span>
+    </div>
+    <div class="tooltip">
+      Left
+      <span class="text left">Tooltip text</span>
+    </div>
+  </div>
+</body>
+
+</html>

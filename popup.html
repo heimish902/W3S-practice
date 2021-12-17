@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .popup {
+      margin-top: 50px;
+      position: relative;
+    }
+    .popup p {
+      color: #2196f3;
+      cursor: pointer;
+    }
+    .popup span {
+      position: absolute;
+      top: -40px;
+      left: 40px;
+      width: 150px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px;
+      background: #555;
+      opacity: 0;
+      transition: all .5s;
+    }
+    .popup span::after {
+      content: "";
+      display: block;
+      clear: both;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      background: #555;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup">
+    <p>Click me to toggle the popup!</p>
+    <span>A Simple Popup!</span>
+  </div>
+  <script>
+    const span = document.querySelector('.popup span');
+    document.querySelector('.popup p').addEventListener("click", function() {
+      if(span.style.opacity == '0') {
+        span.style.opacity = '1'
+      } else {
+        span.style.opacity = '0'
+      }
+    })
+  </script>
+</body>
+</html>
