@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/reset.css">
+
+  <title>Document</title>
+
+  <style>
+    .wrap {
+      width: 90%;
+      margin: 30px auto 0 auto;
+    }
+
+    .wrap h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      width: 100%;
+      height: 50px;
+      background-color: #eee;
+      padding-right: 20px;
+    }
+
+    nav::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    nav ul {
+      line-height: 50px;
+      display: flex;
+      align-items: center;
+      float: left;
+    }
+
+    nav li {
+      padding: 0 20px;
+    }
+
+    nav li.active {
+      background-color: rgb(85, 193, 255);
+    }
+
+    nav li.active a {
+      color: #fff;
+    }
+
+    nav li:not(.active):hover {
+      background-color: #ccc;
+    }
+
+    .search-cont {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      float: right;
+    }
+
+    .search {
+      height: 30px;
+      padding-left: 10px;
+      border: none;
+    }
+
+    .search-cont button {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      border: none;
+      background-color: #ccc;
+      cursor: pointer;
+    }
+
+
+    @media screen and (max-width: 768px) {
+      nav {
+        height: auto;
+        padding-right: 0;
+      }
+
+      nav ul {
+        line-height: 50px;
+        display: block;
+        float: none;
+      }
+
+      nav li {
+        padding: 0 20px;
+      }
+
+      .search-cont {
+        height: 50px;
+        display: block;
+        float: none;
+      }
+
+      .search {
+        width: 100%;
+        height: 50px;
+        padding-left: 10px;
+        border: none;
+      }
+
+      .search-cont button {
+        width: 100%;
+        height: 50px;
+        padding-left: 20px;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Search Bar</h1>
+    <nav>
+      <ul>
+        <li class="active">
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+      <div class="search-cont">
+        <input type="text" class="search" placeholder="Search..">
+        <button tyle="submit">
+          <span class="material-icons">search</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/reset.css">
+  <title>Document</title>
+  <style>
+    body {padding: 20px;}
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      margin-bottom: 20px;
+    }
+    .container {
+      width: 700px;
+      display: flex;
+    }
+    .menu {
+      width: 35%;
+      position: relative;
+      background-color: #ddd;
+    }
+    .menu h2 {
+      padding: 20px 0 15px 15px;
+      font-size: 1.5em;
+    }
+    .menu .search {
+      width: 100%;
+      padding: 15px 0 15px 15px;
+      border: none;
+    }
+    .menu li {
+      padding: 15px 0 15px 15px;
+    }
+    .menu li:hover {
+      background-color: #eee;
+    }
+    .contents {
+      width: 65%;
+      padding: 30px 20px;
+      background-color: #eee;
+    }
+    .contents h2 {
+      margin-bottom: 20px;
+    }
+    .contents p {
+      line-height: 1.8em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Search Menu</h1>
+  <p>Start to type for a specific category inside the search bar to "filter" the search options.</p>
+  <div class="container">
+    <div class="menu">
+      <h2>Menu</h2>
+      <input class="search" type="text" placeholder="Search...">
+      <ul>
+        <li>
+          <a href="#">HTML</a>
+        </li>
+        <li>
+          <a href="#">CSS</a>
+        </li>
+        <li>
+          <a href="#">JavaScript</a>
+        </li>
+        <li>
+          <a href="#">PHP</a>
+        </li>
+        <li>
+          <a href="#">Python</a>
+        </li>
+        <li>
+          <a href="#">jQuery</a>
+        </li>
+        <li>
+          <a href="#">SQL</a>
+        </li>
+        <li>
+          <a href="#">Bootstrap</a>
+        </li>
+        <li>
+          <a href="#">Node.js</a>
+        </li>
+      </ul>
+    </div>
+    <div class="contents">
+      <h2>Page Contents</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati exercitationem dignissimos expedita dolore
+        dolor illo consequatur quos nulla animi delectus optio minus id eum libero doloremque quae, perspiciatis,
+        praesentium atque?</p>
+    </div>
+  </div>
+
+  <script>
+    const ul = document.querySelector(".menu ul");
+    const li = document.querySelectorAll(".menu li");
+    const input = document.querySelector(".search");
+
+    
+    function filters(){
+      let filter = input.value.toUpperCase();
+
+      for(let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName("a")[0];
+
+        if(a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = '';
+        } else {
+          li[i].style.display = 'none';
+        }
+      }
+    }
+
+    input.addEventListener("keyup", filters);
+  </script>
+</body>
+
+</html>

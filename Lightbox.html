@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightbox</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .wrap {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    .wrap p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .box {
+      width: 24%;
+      height: 200px;
+      transition: all .5s;
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .box:hover {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .modal {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+    }
+
+    .close {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .close span {
+      font-size: 50px;
+    }
+
+    .gallery {
+      width: 1200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .slide_container {
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      height: 500px;
+      display: none;
+    }
+
+    .slide .text {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .prev,
+    .next {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .prev span,
+    .next span {
+      font-size: 30px;
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    .title {
+      width: 100%;
+      height: 60px;
+      color: #fff;
+      background-color: #000;
+    }
+
+    .title h3 {
+      line-height: 60px;
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .thum {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .thumbox {
+      width: 25%;
+    }
+
+    .thumbox img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+    }
+
+    .thumbox img:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Lightbox (Modal Image Gallery)</h1>
+    <p>Click on of the images to open the lightbox : </p>
+    <div class="container">
+      <div class="box">
+        <img
+          src="https://images.pexels.com/photos/2002719/pexels-photo-2002719.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="">
+      </div>
+      <div class="box">
+        <img
+          src="https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="">
+      </div>
+      <div class="box">
+        <img
+          src="https://images.pexels.com/photos/2850287/pexels-photo-2850287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="">
+      </div>
+      <div class="box">
+        <img
+          src="https://images.pexels.com/photos/1982485/pexels-photo-1982485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="">
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="close">
+        <span class="material-icons">close</span>
+      </div>
+      <div class="gallery">
+        <div class="slide_container">
+          <div class="slide">
+            <div class="text">1/4</div>
+            <img
+              src="https://images.pexels.com/photos/2002719/pexels-photo-2002719.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Be Brilliant Neon Light">
+          </div>
+          <div class="slide">
+            <div class="text">2/4</div>
+            <img
+              src="https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Pink Flowers">
+          </div>
+          <div class="slide">
+            <div class="text">3/4</div>
+            <img
+              src="https://images.pexels.com/photos/2850287/pexels-photo-2850287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Two Person on Boat">
+          </div>
+          <div class="slide">
+            <div class="text">4/4</div>
+            <img
+              src="https://images.pexels.com/photos/1982485/pexels-photo-1982485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Pink Donuts">
+          </div>
+
+          <div class="prev">
+            <span class="material-icons">arrow_back_ios_new</span>
+          </div>
+          <div class="next">
+            <span class="material-icons">arrow_forward_ios</span>
+          </div>
+        </div>
+
+        <div class="title">
+          <h3>image title</h3>
+        </div>
+        <div class="thum">
+          <div class="thumbox">
+            <img
+              src="https://images.pexels.com/photos/2002719/pexels-photo-2002719.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="">
+          </div>
+          <div class="thumbox">
+            <img
+              src="https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="">
+          </div>
+          <div class="thumbox">
+            <img
+              src="https://images.pexels.com/photos/2850287/pexels-photo-2850287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="">
+          </div>
+          <div class="thumbox">
+            <img
+              src="https://images.pexels.com/photos/1982485/pexels-photo-1982485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const imgbox = document.querySelectorAll(".box");
+    const slide = document.querySelectorAll('.slide')
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+    const text = document.querySelector("h3")
+    const close = document.querySelector(".close");
+    const modal = document.querySelector(".modal");
+    const thum = document.querySelectorAll(".thumbox img");
+
+    let slideIndex = 1;
+
+    function currentSlide(n) {
+      showSlide(slideIndex = n)
+    }
+
+    function showSlide(n) {
+      if (n > slide.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slide.length;
+      }
+
+      for (let i = 0; i < slide.length; i++) {
+        slide[i].style.display = "none";
+        thum[i].style.opacity = "0.5";
+      }
+
+      slide[slideIndex - 1].style.display = "block";
+      thum[slideIndex - 1].style.opacity = "1";
+      text.innerText = slide[slideIndex - 1].lastElementChild.alt;
+    }
+
+
+    imgbox.forEach((el, index) => {
+      el.addEventListener("click", function () {
+        modal.style.display = "block";
+        currentSlide(index + 1);
+      });
+    });
+    close.addEventListener("click", function () {
+      modal.style.display = "none";
+    });
+
+    thum.forEach((el, index) => {
+      el.addEventListener("click", function () {
+        currentSlide(index + 1)
+      });
+    })
+
+    prev.addEventListener("click", function () {
+      currentSlide(slideIndex -= 1);
+    })
+    next.addEventListener("click", function () {
+      currentSlide(slideIndex += 1);
+    })
+
+    showSlide(slideIndex);
+  </script>
+</body>
+
+</html>
