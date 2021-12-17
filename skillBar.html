@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Bar</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      margin-bottom: 100px;
+    }
+
+    .container>p {
+      margin: 0 0 10px 0;
+    }
+
+    .skillbar-container {
+      width: 500px;
+      height: 30px;
+      margin-bottom: 10px;
+      background-color: #ddd;
+    }
+
+    .skillbar {
+      width: 0%;
+      height: 100%;
+      transition: all 1.5s;
+    }
+
+    .skillbar.green {
+      background-color: #04AA6D;
+    }
+
+    .skillbar.blue {
+      background: #2196F3;
+    }
+
+    .skillbar.red {
+      background: #F44336;
+    }
+
+    .skillbar.gray {
+      background: #808080;
+    }
+
+    .skillbar>p {
+      margin: 0;
+      padding: 0 10px;
+      line-height: 30px;
+      font-size: 14px;
+      color: #fff;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <section></section>
+  <div class="container">
+    <h2>Click</h2>
+    <p>HTML</p>
+    <div class="skillbar-container">
+      <div class="skillbar green">
+        <p>90%</p>
+      </div>
+    </div>
+    <p>CSS</p>
+    <div class="skillbar-container">
+      <div class="skillbar blue">
+        <p>80%</p>
+      </div>
+    </div>
+    <p>JavaScript</p>
+    <div class="skillbar-container">
+      <div class="skillbar red">
+        <p>65%</p>
+      </div>
+    </div>
+    <p>PHP</p>
+    <div class="skillbar-container">
+      <div class="skillbar gray">
+        <p>65%</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const skillBar = document.querySelectorAll(".skillbar");
+    const container = document.querySelector(".container")
+
+
+    function showCont() {
+      skillBar.forEach(el => {
+        let text = el.lastElementChild.innerHTML;
+        el.style.width = text;
+      })
+    }
+
+    container.addEventListener("click", showCont);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Side Navigation</title>
+
+  <style>
+    .sidebar {
+      width: 0;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #ddd;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .sidebar ul {
+      padding: 30px 20px;
+    }
+
+    .sidebar li a {
+      display: block;
+      color: #ddd;
+      font-size: 1.2em;
+      padding: 10px 0;
+    }
+
+    .open button {
+      display: block;
+      margin: 20px;
+      padding: 10px 20px;
+      color: #fff;
+      border-radius: 5px;
+      background-color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <span class="close">&times;</span>
+    <ul>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Services</a>
+      </li>
+      <li>
+        <a href="#">Clients</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="open">
+    <button type="button">Sidenav overlay</button>
+    <button type="button">Sidenav overlay without animation</button>
+    <button type="button">Sidenav push(off-canves)</button>
+    <button type="button">Sidenav push w/opacity</button>
+    <button type="button">Sidenav full-width</button>
+  </div>
+
+  <script>
+    const body = document.querySelector("body")
+    const sideNav = document.querySelector(".sidebar");
+    const container = document.querySelector(".open")
+
+    const open = document.querySelectorAll(".open button");
+    const close = document.querySelector(".close");
+    const li = document.querySelectorAll('.sidebar li')
+
+
+    function openNav(e) {
+      if (e.target == open[0]) {
+        sideNav.style.width = "180px"
+        sideNav.style.transition = "all 0.5s"
+      } else if (e.target == open[1]) {
+        sideNav.style.width = "180px"
+        sideNav.style.transition = "all 0s";
+      } else if (e.target == open[2]) {
+        sideNav.style.width = "180px"
+        sideNav.style.transition = "all 0.5s"
+
+        container.style.marginLeft = "180px"
+        container.style.transition = "all 0.5s"
+      } else if (e.target == open[3]) {
+        sideNav.style.width = "180px"
+
+        container.style.marginLeft = "180px"
+        container.style.transition = "all 0.5s"
+
+        body.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
+        body.style.transition = "all 0.5s"
+      } else if (e.target == open[4]) {
+        li.forEach(el => {
+          el.style.textAlign = "center";
+        })
+        sideNav.style.width = "100%";
+        sideNav.style.transition = "all 0.5s";
+      }
+    }
+
+    function closeNav() {
+      sideNav.style.width = "0px"
+      container.style.marginLeft = "0px";
+      body.style.backgroundColor = "rgb(255, 255, 255)"
+    }
+
+    open[0].addEventListener('click', openNav);
+    open[1].addEventListener('click', openNav);
+    open[2].addEventListener('click', openNav);
+    open[3].addEventListener('click', openNav);
+    open[4].addEventListener('click', openNav);
+
+    close.addEventListener('click', closeNav);
+  </script>
+</body>
+
+</html>
