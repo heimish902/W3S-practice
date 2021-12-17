@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>To Do List</title>
+  <style>
+    @font-face {
+      font-family: 'BMJUA';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    ul,
+    li,
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'BMJUA';
+    }
+
+    .wrap {
+      width: 600px;
+      margin: 50px auto 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 1px 1px 5px rgb(144, 144, 144);
+    }
+
+    .header {
+      width: 100%;
+      padding: 30px;
+      color: #fff;
+      text-align: center;
+      background: rgb(251, 188, 188);
+    }
+
+    .header h1 {
+      margin: 0 0 20px 0;
+      font-weight: 400;
+    }
+
+    .header .addToDo {
+      width: 100%;
+      height: 40px;
+      position: relative;
+    }
+
+    .header input {
+      width: 80%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 0 0 20px;
+      font-size: 15px;
+      border: none;
+      outline: none;
+    }
+
+    .header button {
+      width: 20%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      cursor: pointer;
+
+    }
+
+    .todo {
+      width: 100%;
+    }
+
+    .todo li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 50px;
+      position: relative;
+    }
+
+    .todo .close {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      color: red;
+      transform: translateY(-50%);
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .todo li:nth-of-type(odd) {
+      background: rgb(252, 238, 238);
+    }
+
+    .todo li:nth-of-type(even) {
+      background: rgb(253, 228, 228);
+    }
+
+    .todo li.check {
+      text-decoration: line-through;
+      background: rgb(173, 136, 136);
+    }
+    .todo li.check .done {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      color: #fff;
+      transform: translateY(-50%);
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>My To Do List</h1>
+      <div class="addToDo">
+        <input type="text" placeholder="Title..">
+        <button class="add">Add</button>
+      </div>
+
+    </div>
+    <div class="todo">
+      <ul class="list">
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const addList = document.querySelector(".add");
+    const list = document.querySelector(".list");
+    const close = document.querySelectorAll(".close");
+    
+    function newList() {
+      
+      let value = document.querySelector("input").value;
+      let li = document.createElement("li");
+      let span = document.createElement("span");
+      let text = document.createTextNode("close");
+      let todo = document.createTextNode(value);
+
+      
+      if (value == '') {
+        alert("할 일을 입력해주세요!");
+      } else {
+        span.className = "material-icons close";
+        span.appendChild(text);
+  
+        li.append(value);
+        li.appendChild(span);
+        list.appendChild(li);
+      }
+
+      //input 초기화
+      value = '';
+
+      //remove 
+      span.onclick = function() {
+        this.parentElement.remove();
+      }
+
+      // list check 
+      li.onclick = function() {
+        if(li.className == '') {
+          let done = document.createElement("span");
+          done.className = "material-icons done"
+          done.textContent = 'check';
+
+          li.appendChild(done);
+          this.classList.add("check");
+
+        } else {
+          this.classList.remove("check");
+          this.lastElementChild.remove();
+        }
+      }
+    }
+    
+    addList.addEventListener("click", newList);
+  </script>
+</body>
+
+</html>
