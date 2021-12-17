@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+  <title>Document</title>
+  <style>
+    .container {
+      width: 600px;
+      margin: 50px auto 0 auto;
+      padding: 30px;
+      border: 3px solid #E7E9EB;
+    }
+
+    .title h1 {
+      margin: 0 0 20px 0;
+      font-weight: 400;
+      display: inline-block;
+    }
+
+    .title .rate {
+      margin-left: 20px;
+      display: inline-block;
+    }
+
+    .title .rate i {
+      font-size: 25px;
+    }
+
+    .title .rate .active {
+      color: orange;
+    }
+
+    .title p {
+      margin: 0 0 20px 0;
+    }
+
+    .title hr {
+      height: 3px;
+      border: 2px solid #E7E9EB;
+      background: #f1f1f1;
+    }
+
+    .avrRate {
+      margin-top: 30px;
+    }
+
+    .avrRate .progress {
+      display: inline-block;
+      width: 75%;
+      height: 25px;
+      background: #f1f1f1;
+      vertical-align: middle;
+      margin: 0 50px 10px 20px;
+    }
+
+    .green {
+      width: 60%;
+      height: 100%;
+      background: #04AA6D;
+    }
+
+    .blue {
+      width: 25%;
+      height: 100%;
+      background: #2196F3;
+    }
+
+    .skyblue {
+      width: 5%;
+      height: 100%;
+      background: #00bcd4;
+    }
+
+    .orange {
+      width: 3%;
+      height: 100%;
+      background: #ff9800;
+    }
+
+    .red {
+      width: 7%;
+      height: 100%;
+      background: #f44336;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">
+      <h1>User Rating</h1>
+      <div class="rate">
+        <i class="fas fa-star active"></i>
+        <i class="fas fa-star active"></i>
+        <i class="fas fa-star active"></i>
+        <i class="fas fa-star active"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p>4.1 average based on 254 reviews.</p>
+      <hr>
+    </div>
+    <div class="avrRate">
+      <div>
+        <span>5 star</span>
+        <div class="progress">
+          <div class="green"></div>
+        </div>
+        <span>150</span>
+      </div>
+      <div>
+        <span>4 star</span>
+        <div class="progress">
+          <div class="blue"></div>
+        </div>
+        <span>63</span>
+      </div>
+      <div>
+        <span>3 star</span>
+        <div class="progress">
+          <div class="skyblue"></div>
+        </div>
+        <span>15</span>
+      </div>
+      <div>
+        <span>2 star</span>
+        <div class="progress">
+          <div class="orange"></div>
+        </div>
+        <span>6</span>
+      </div>
+      <div>
+        <span>1 star</span>
+        <div class="progress">
+          <div class="red"></div>
+        </div>
+        <span>20</span>
+      </div>
+    </div>
+</body>
+
+</html>
