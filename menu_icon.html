@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Icon</title>
+  <style>
+    .menu {
+      margin: 30px;
+    }
+
+    .menu>div {
+      width: 35px;
+      height: 5px;
+      margin: 6px 0;
+      background-color: #000;
+      transition: all 0.5s;
+    }
+
+    .bar1.change {
+      transform: rotate(-45deg) translate(-9px, 6px);
+    }
+
+    .bar2.change {
+      opacity: 0;
+    }
+
+    .bar3.change {
+      transform: rotate(45deg) translate(-8px, -8px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+  </div>
+
+  <script>
+    const menu = document.querySelector(".menu");
+    const bar = document.querySelectorAll(".bar");
+
+    menu.addEventListener("click", function () {
+      bar.forEach(el => {
+        el.classList.toggle("change");
+      })
+    });
+  </script>
+</body>
+
+</html>
