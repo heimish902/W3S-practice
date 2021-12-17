@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Collapsible</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .open {
+      width: 500px;
+      height: 40px;
+      padding: 0 20px;
+      text-align: left;
+      color: #fff;
+      border: none;
+      background: #555;
+      cursor: pointer;
+    }
+
+    .open span {
+      font-size: 16px;
+      float: right;
+      vertical-align: middle;
+    }
+
+    .contents {
+      width: 500px;
+      max-height: 0px;
+      background-color: #e7e9eb;
+      transition: all 0.5s;
+      overflow: hidden;
+    }
+
+    .contents p {
+      margin: 0;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Animated Collapsibles</h1>
+  <p>A Collapsible :</p>
+  <button class="open">Open Collapsible
+    <span class="material-icons">add</span>
+  </button>
+  <div class="contents">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae tempore, excepturi repellendus fugiat quam
+      animi iste porro autem ab harum nihil totam dolore magnam repellat corrupti? Architecto labore nesciunt
+      necessitatibus.</p>
+  </div>
+  <p>Collapsible Set:</p>
+  <button class="open">Open Collapsible
+    <span class="material-icons">add</span>
+  </button>
+  <div class="contents">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae tempore, excepturi repellendus fugiat quam
+      animi iste porro autem ab harum nihil totam dolore magnam repellat corrupti? Architecto labore nesciunt
+      necessitatibus.</p>
+  </div>
+  <button class="open">Open Collapsible
+    <span class="material-icons">add</span>
+  </button>
+  <div class="contents">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae tempore, excepturi repellendus fugiat quam
+      animi iste porro autem ab harum nihil totam dolore magnam repellat corrupti? Architecto labore nesciunt
+      necessitatibus.</p>
+  </div>
+  <button class="open">Open Collapsible
+    <span class="material-icons">add</span>
+  </button>
+  <div class="contents">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae tempore, excepturi repellendus fugiat quam
+      animi iste porro autem ab harum nihil totam dolore magnam repellat corrupti? Architecto labore nesciunt
+      necessitatibus.</p>
+  </div>
+
+  <script>
+    const open = document.querySelectorAll(".open");
+
+    open.forEach((el, index) => {
+      el.addEventListener("click", function () {
+        let span = el.querySelector('span');
+        let content = el.nextElementSibling;
+
+        if (content.style.maxHeight) {
+          span.textContent = 'add';
+          content.style.maxHeight = null;
+        } else {
+          span.textContent = 'remove';
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

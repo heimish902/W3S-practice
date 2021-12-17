@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Calendar</title>
+  <style>
+    @font-face {
+      font-family: 'BMJUA';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'BMJUA';
+    }
+
+    ul, li, ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .wrap {
+      width: 800px;
+      margin: 50px auto 0 auto;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .header {
+      width: 100%;
+      padding: 50px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: #fff;
+      background-color: rgb(255, 205, 205);
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 3em;
+      font-weight: 400;
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .header button {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      color: #fff;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+    }
+
+    .header .prev {
+      left: 50px;
+    }
+    .header .next {
+      right: 50px;
+    }
+
+    .day {
+      width: 100%;
+      background: rgb(250, 219, 219);
+    }
+    .day::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    li {
+      float: left;
+      width: 14.28%;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .date {
+      width: 100%;
+      background-color: rgb(245, 241, 241);
+    }
+    .date::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .check {
+      padding: 15px;
+      background: rgb(255, 205, 205);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h2>AUGUST</h2>
+      <p>2021</p>
+      <button class="prev">
+        <span class="material-icons">
+          arrow_back_ios
+        </span>
+      </button>
+      <button class="next">
+        <span class="material-icons">
+          arrow_forward_ios
+        </span>
+      </button>
+    </div>
+    <div class="day">
+      <ul>
+        <li>MON</li>
+        <li>TUE</li>
+        <li>WED</li>
+        <li>THU</li>
+        <li>FRI</li>
+        <li>SAT</li>
+        <li>SUN</li>
+      </ul>
+    </div>
+    <div class="date">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+      </ul>
+      <ul>
+        <li>8</li>
+        <li>9</li>
+        <li><span class="check">10</span></li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+      </ul>
+      <ul>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+      </ul>
+      <ul>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+      </ul>
+      <ul>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
