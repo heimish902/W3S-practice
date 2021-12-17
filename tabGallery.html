@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Tab Gallery</title>
+
+  <style>
+    .wrap {
+      margin: 20px;
+    }
+    .wrap h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .wrap p {
+      margin-bottom: 20px;
+    }
+    .container {
+      width: 400px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .thum {
+      width: 23%;
+      height : 100px;
+    }
+
+    .thum img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .thum img:hover {
+      opacity: 0.6;
+    }
+    .big_cont {
+      width: 400px;
+      height: 350px;
+      position: relative;
+    }
+    .big_cont span {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      line-height: 1em;
+      padding: 8px 11px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    .big_cont span:hover {
+      color: #000;
+      background-color: #eee;
+    }
+    .big_cont img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .big_cont .text {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Tab Gallery</h1>
+    <p>Click on an image to expand it:</p>
+    <div class="container">
+      <div class="thum">
+        <img src="./images/pexels-photo-1622539.jpeg" alt="x-mas ball">
+      </div>
+      <div class="thum">
+        <img src="./images/pexels-photo-1669095.jpeg" alt="x-mas tree">
+      </div>
+      <div class="thum">
+        <img src="./images/pexels-photo-3303619.jpeg" alt="x-mas visual">
+      </div>
+      <div class="thum">
+        <img src="./images/pexels-photo-5469707.jpeg" alt="x-mas cat">
+      </div>
+    </div>
+    <div class="big_cont">
+      <span class="close">&times;</span>
+      <img class="big_img">
+      <div class="text"></div>
+    </div>
+  </div>
+
+  <script>
+    const thum = document.querySelectorAll(".thum img");
+    const big_img = document.querySelector(".big_img");
+    const text = document.querySelector(".text");
+    const close = document.querySelector(".close");
+
+    thum.forEach(el => {
+      el.addEventListener("click", function() {
+        big_img.src = this.src;
+        text.textContent = this.alt;
+        big_img.parentElement.style.display = "block";
+      })  
+    })
+
+    function reset() {
+      big_img.parentElement.style.display = "none";
+    }
+
+    close.addEventListener("click", function() {
+      reset();
+    })
+
+    reset();
+  </script>
+</body>
+</html>
