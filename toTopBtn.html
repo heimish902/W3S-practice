@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Top Button</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        padding: 20px;
+      }
+      .wrap {
+        position: relative;
+        border: 1px solid #eee;
+      }
+      header {
+        width: 100%;
+        color: #fff;
+        background-color: #000;
+      }
+      header h2 {
+        padding: 20px;
+        margin: 0;
+      }
+      section {
+        width: 100%;
+        height: 2500px;
+        padding: 20px;
+        background-color: #eee;
+      }
+      section p {
+        margin: 0;
+      }
+      .topBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 15px;
+        z-index: 99;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        background-color: red;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scroll Back To Top Button</h1>
+    <div class="wrap">
+      <button type="button" class="topBtn">Top</button>
+      <header>
+        <h2>Scroll Down</h2>
+      </header>
+      <section class="contents">
+        <p>
+          This example demonstrates how to create a "scroll to top" button that
+          becomes visible when the user starts to scroll the page.
+        </p>
+      </section>
+    </div>
+    <script>
+      const btn = document.querySelector('.topBtn');
+
+      function showBtn() {
+        let scrollTop =
+          window.pageYOffset ||
+          window.scrollY ||
+          document.documentElement.scrollTop;
+        if (scrollTop > 50) {
+          btn.style.opacity = 1;
+        } else {
+          btn.style.opacity = 0;
+        }
+      }
+
+      function moveScroll() {
+        window.pageYOffset = 0;
+        window.scrollY = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      window.addEventListener('scroll', showBtn);
+      btn.addEventListener('click', moveScroll);
+    </script>
+  </body>
+</html>
