@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Text</title>
+    <style>
+      .wrap {
+        max-width: 800px;
+        margin: 30px auto 0 auto;
+        position: relative;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+      p {
+        position: absolute;
+        margin: 0;
+        font-size: 18px;
+      }
+      p.top {
+        top: 10px;
+      }
+      p.bottom {
+        bottom: 10px;
+      }
+      p.left {
+        left: 10px;
+      }
+      p.right {
+        right: 10px;
+      }
+      p.center {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      p.block {
+        background-color: black;
+        padding: 20px;
+        color: #fff;
+      }
+      p.transparent {
+        background-color: rgba(0, 0, 0); /* 대체 색상 */
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <img src="images/pexels-photo-5702702.jpeg" alt="" />
+      <p class="top left">Top Left</p>
+      <p class="top right">Top Right</p>
+      <p class="center">Center</p>
+      <p class="bottom left transparent">Bottom Left</p>
+      <p class="bottom right block">Bottom Right</p>
+    </div>
+  </body>
+</html>
