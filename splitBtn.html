@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <title>Split Buttons</title>
+    <style>
+      .btn {
+        padding: 15px 20px;
+        font-size: 18px;
+        color: #fff;
+        background-color: rgb(0, 119, 255);
+        border: none;
+      }
+      .dropdown {
+        position: absolute;
+        display: inline-block;
+      }
+      .dropdown .btn {
+        border-left: 1px solid rgb(16, 90, 175);
+      }
+      .contents {
+        display: none;
+        width: 120px;
+        background-color: #eee;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        list-style: none;
+        padding: 10px;
+      }
+      li a {
+        color: #000;
+        text-decoration: none;
+      }
+      /* hover */
+      .btn:hover {
+        background-color: rgb(16, 90, 175);
+      }
+      .dropdown:hover .contents {
+        display: block;
+      }
+      li:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Split Button Dropdowns</h1>
+    <p>Hover over the arrow icon to open the dropdown menu:</p>
+
+    <button class="btn" type="button">Button</button>
+    <div class="dropdown">
+      <button class="btn"><i class="fas fa-sort-down"></i></button>
+      <div class="contents">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
