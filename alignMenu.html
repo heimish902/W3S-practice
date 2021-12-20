@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Links</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      /* common */
+      body > div {
+        max-width: 800px;
+        margin: 30px auto 0 auto;
+      }
+      h1 {
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+      nav {
+        width: 100%;
+        background-color: #444;
+        position: relative;
+      }
+      nav li {
+        float: left;
+      }
+      nav li.active {
+        background-color: #04aa6d;
+      }
+      nav li a {
+        display: block;
+        padding: 15px;
+        color: #fff;
+      }
+      nav li:not(.active) a:hover {
+        color: #000;
+        background-color: #eee;
+      }
+
+      /* float */
+      .center {
+        position: absolute;
+        float: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+
+      /* equalWidth */
+      .equalWidth ul {
+        width: 100%;
+      }
+      .equalWidth li {
+        width: 20%;
+        text-align: center;
+      }
+
+      /* borderBottom */
+      .bottomBorder .active {
+        background-color: transparent;
+        border-bottom: 5px solid red;
+      }
+      .bottomBorder nav li:not(.active):hover a {
+        color: #fff;
+        background-color: #444;
+        border-bottom: 5px solid red;
+      }
+
+      @media screen and (max-width: 768px) {
+        body > div {
+          width: 100%;
+        }
+        nav li {
+          float: none;
+          text-align: center;
+        }
+        .center {
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: none;
+        }
+        .left {
+          float: none;
+        }
+        .right {
+          float: none;
+        }
+        .equalWidth ul {
+          width: 100%;
+        }
+        .equalWidth li {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="rightAlign">
+      <h1>Right Aligned Menu Links</h1>
+      <nav class="clearfix">
+        <ul>
+          <li class="active">
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <div class="right">
+            <li>
+              <a href="#">Search</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="centerAlign">
+      <h1>Center Aligned Menu Links</h1>
+      <nav class="clearfix">
+        <ul>
+          <div class="center">
+            <li class="active">
+              <a href="#">Home</a>
+            </li>
+          </div>
+          <li>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <div class="right">
+            <li>
+              <a href="#">Search</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="equalWidth">
+      <h1>Equal Width Menu</h1>
+      <nav class="clearfix">
+        <ul>
+          <li class="active">
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Search</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="bottomBorder">
+      <h1>Bottom Border Menu Links</h1>
+      <nav class="clearfix">
+        <ul>
+          <li class="active">
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">News</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Search</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
