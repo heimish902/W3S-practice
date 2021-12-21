@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Elements</title>
+    <style>
+      button {
+        margin-right: 10px;
+        padding: 15px 20px;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(68, 67, 67);
+      }
+      .cotainer {
+        max-width: 500px;
+      }
+      ul {
+        margin: 20px 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      li {
+        width: 80px;
+        height: 60px;
+        line-height: 60px;
+        margin: 0 10px 10px 0;
+        color: #fff;
+        text-align: center;
+        background-color: rgb(168, 115, 184);
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttons">
+      <button data-type="all">Show all</button>
+      <button data-type="cars">Cars</button>
+      <button data-type="animals">Animals</button>
+      <button data-type="fruits">Fruits</button>
+      <button data-type="colors">Colors</button>
+    </div>
+    <div class="container">
+      <ul class="list"></ul>
+    </div>
+    <script>
+      let elements = {
+        cars: ['BMW', 'Volvo', 'Mustang'],
+        animals: ['Cat', 'Dog', 'Cow'],
+        fruits: ['Orange', 'Melon', 'Kiwi', 'Banana', 'Lemon'],
+        colors: ['Red', 'Blue', 'Orange'],
+      };
+
+      const buttons = document.querySelector('.buttons');
+      const list = document.querySelector('.list');
+
+      function filterElem(e) {
+        const dataset = e.target.dataset;
+        const key = dataset.type;
+
+        for (let items in elements) {
+          const item = elements[items];
+          if (key == items) {
+            createElement(item);
+          } else if (key == 'all') {
+            showAll();
+          }
+        }
+      }
+
+      function createElement(items) {
+        list.innerHTML = '';
+
+        for (let i = 0; i < items.length; i++) {
+          const li = document.createElement('li');
+          li.innerText = items[i];
+          list.appendChild(li);
+        }
+      }
+
+      function showAll() {
+        list.innerHTML = '';
+
+        for (let items in elements) {
+          for (let i = 0; i < elements[items].length; i++) {
+            const li = document.createElement('li');
+            li.innerText = elements[items][i];
+            list.appendChild(li);
+          }
+        }
+      }
+
+      buttons.addEventListener('click', filterElem);
+    </script>
+  </body>
+</html>
