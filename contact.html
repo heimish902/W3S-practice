@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .container {
+        max-width: 600px;
+        padding: 20px;
+        background-color: #eee;
+      }
+      .container h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+      }
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 5px;
+      }
+      input {
+        outline: none;
+      }
+      input,
+      select,
+      textarea {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      input[type='submit'] {
+        width: 100px;
+        margin-top: 10px;
+        padding: 15px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        background-color: #04aa6d;
+      }
+
+      input[type='submit']:hover {
+        background-color: #0a7c52;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Contact</h1>
+      <form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" placeholder="Your name" />
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" placeholder="Your last name" />
+        <label for="country">Country</label>
+        <select name="country" id="contry">
+          <option value="korea">Korea</option>
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+        <label for="subject">Subject</label>
+        <textarea
+          id="subject"
+          cols="30"
+          rows="10"
+          placeholder="Write something.."
+        >
+        </textarea>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
