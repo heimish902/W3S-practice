@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Login Form</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .container {
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        background-color: #eee;
+      }
+      h1 {
+        padding: 0 20px;
+        margin: 20px 0;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .middle {
+        width: 100%;
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .left {
+        width: 40%;
+      }
+      .left li {
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .left a {
+        color: #fff;
+      }
+      .left i {
+        margin-right: 5px;
+      }
+      .blue {
+        background-color: #5770a6;
+      }
+      .skyblue {
+        background-color: #6db7ef;
+      }
+      .red {
+        background-color: #e06555;
+      }
+      .blue:hover {
+        background-color: #3c507a;
+      }
+      .skyblue:hover {
+        background-color: #3693da;
+      }
+      .red:hover {
+        background-color: #ca4837;
+      }
+      .center {
+        border: 2px solid #ddd;
+        position: absolute;
+        width: 2px;
+        height: 170px;
+      }
+      .center span {
+        padding: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 2px solid #ddd;
+        background-color: #eee;
+      }
+      .center_hide {
+        display: none;
+      }
+      .right {
+        width: 40%;
+      }
+      form {
+        width: 100%;
+      }
+      form input {
+        width: 100%;
+        display: block;
+        padding: 15px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      input[type='submit'] {
+        color: #fff;
+        background-color: #04aa6d;
+      }
+      input[type='submit']:hover {
+        background-color: #088557;
+      }
+      .bottom {
+        width: 100%;
+      }
+      .bottom button {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        color: #fff;
+        background-color: #555;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          width: 100%;
+        }
+        .middle {
+          padding: 20px 30px;
+          flex-direction: column;
+          justify-content: space-around;
+        }
+        .left {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .center {
+          display: none;
+        }
+        .center_hide {
+          display: block;
+          margin-bottom: 20px;
+        }
+        .right {
+          width: 100%;
+        }
+        .bottom {
+          width: 100%;
+        }
+        .bottom button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login with Social Media or Manually</h1>
+      <div class="middle">
+        <div class="left">
+          <ul>
+            <li class="blue">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+                Login with Facebook
+              </a>
+            </li>
+            <li class="skyblue">
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+                Login with Twitter
+              </a>
+            </li>
+            <li class="red">
+              <a href="#">
+                <i class="fab fa-google"></i>
+                Login with Google+
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="center">
+          <span>or</span>
+        </div>
+        <div class="center_hide">Or sign in manually</div>
+        <div class="right">
+          <form>
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="submit" value="Login" />
+          </form>
+        </div>
+      </div>
+      <div class="bottom">
+        <button>Sign up</button>
+        <button>Forgot password?</button>
+      </div>
+    </div>
+  </body>
+</html>
