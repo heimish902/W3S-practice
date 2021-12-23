@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Scrolling</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+      section {
+        max-width: 1000px;
+        height: 400px;
+        padding: 50px;
+        box-sizing: border-box;
+      }
+      section:first-of-type {
+        background-color: red;
+      }
+      section:last-of-type {
+        background-color: yellow;
+      }
+      .toTop {
+        opacity: 0;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+      }
+      button {
+        padding: 10px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Smooth Scrolling</h1>
+    <section>
+      <h2>section1</h2>
+      <button>Click me to Smooth scroll to section2</button>
+    </section>
+    <section>
+      <h2>section2</h2>
+      <button>Click me to Smooth scroll to section1</button>
+    </section>
+    <button class="toTop">Top</button>
+
+    <script>
+      const section1 = document.querySelector(
+        'section:first-of-type'
+      ).offsetTop;
+      const section2 = document.querySelector('section:last-of-type').offsetTop;
+      const button = document.querySelectorAll('button');
+      const topBtn = document.querySelector('.toTop');
+
+      button.forEach((el) => {
+        el.addEventListener('click', function (e) {
+          if (e.target == button[0]) {
+            window.scrollTo({ top: section2, behavior: 'smooth' });
+            showTop();
+          } else if (e.target == button[1]) {
+            window.scrollTo({ top: section1, behavior: 'smooth' });
+            showTop();
+          }
+        });
+      });
+
+      topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        showTop();
+      });
+
+      function showTop() {
+        let scrollTop =
+          window.scrollY ||
+          document.documentElement.scrollTop ||
+          window.pageYOffset;
+
+        if (scrollTop >= 50) {
+          topBtn.style.opacity = 1;
+        } else {
+          topBtn.style.opacity = 0;
+        }
+      }
+
+      window.addEventListener('scroll', showTop);
+    </script>
+  </body>
+</html>
+<iframe src="" frameborder="0"></iframe>

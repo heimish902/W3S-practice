@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullscreen Window</title>
+    <style>
+      video {
+        display: block;
+        max-width: 400px;
+        transition: all 0.5s;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        color: #fff;
+        border: none;
+        background-color: #444;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fullscreen Window</h1>
+    <p>Click on the button to open the video in fullscreen mode:</p>
+    <p>Tip: Press the "Esc" key to exit full screen.</p>
+    <video src="./video/bgVideo1.mp4" controls></video>
+    <button>open video in fullscreen mode.</button>
+
+    <script>
+      const button = document.querySelector('button');
+
+      function fullscreen() {
+        const video = document.querySelector('video');
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          // safari
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          // IE11
+          video.msRequestFullscreen();
+        }
+      }
+      button.addEventListener('click', fullscreen);
+    </script>
+  </body>
+</html>
