@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 10000px;
+        background: #f1f1f1;
+      }
+
+      #Layer_2 {
+        position: fixed;
+        top: 15%;
+        width: 400px;
+        height: 210px;
+        margin-left: -50px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      version="1.1"
+      id="Layer_2"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 600 400"
+      style="enable-background: new 0 0 600 400"
+      xml:space="preserve"
+    >
+      <style type="text/css">
+        .st0 {
+          fill: #ffffff;
+          stroke: #d10005;
+          stroke-width: 4;
+          stroke-miterlimit: 10;
+        }
+        .st1,
+        .st2,
+        .st3,
+        .st4,
+        .st5 {
+          fill: none;
+          stroke: #d10005;
+          stroke-width: 3px;
+          stroke-miterlimit: 10;
+        }
+      </style>
+      <path class="st0" d="M300,206" />
+      <path
+        class="st1"
+        d="M338,278.5c0,0-39.5,0.5-43,47c0,0-7,39,43,50c0,0,46,1.5,53.5-48.5C391.5,327,388.5,278.5,338,278.5z"
+      />
+      <path
+        class="st2"
+        d="M303.9,297.4c0,0-18.4-24.4-47.9-18.9S212.5,313,216.5,327c0,0-2.5,37.5,47,48.5c0,0,24.8,0.6,40.4-18.7"
+      />
+      <path
+        class="st3"
+        d="M256,278.5c0,0-21-58,44-66.5c0,0,57.8-1.4,47.1,67.1"
+      />
+      <path
+        class="st4"
+        d="M300,212c0,0,3-35.5,21.5-66.5c0,0-59.5-33.5-58-89c0,0-60.5,7.5-88.5-30c0,0,11,39.5-28,83c0,0,50,48,28,96.5
+	c0,0,77.7,19.8,82.3,31.2"
+      />
+      <path
+        class="st5"
+        d="M300,129.6c0,0,34.5-26.6,37-71.6c0,0,71.5,3,87.5-31.5c0,0-15,48,28.5,83.5c0,0-49,44.5-28.5,96
+	c0,0-64,20.1-78.3,39.5"
+      />
+    </svg>
+
+    <script>
+      let st1 = document.querySelector('.st1');
+      let st2 = document.querySelector('.st2');
+      let st3 = document.querySelector('.st3');
+      let st4 = document.querySelector('.st4');
+      let st5 = document.querySelector('.st5');
+
+      let length1 = st1.getTotalLength();
+      let length2 = st2.getTotalLength();
+      let length3 = st3.getTotalLength();
+      let length4 = st4.getTotalLength();
+      let length5 = st5.getTotalLength();
+
+      st1.style.strokeDasharray = length1;
+      st1.style.strokeDashoffset = length1;
+
+      st2.style.strokeDasharray = length2;
+      st2.style.strokeDashoffset = length2;
+
+      st3.style.strokeDasharray = length3;
+      st3.style.strokeDashoffset = length3;
+
+      st4.style.strokeDasharray = length4;
+      st4.style.strokeDashoffset = length4;
+
+      st5.style.strokeDasharray = length5;
+      st5.style.strokeDashoffset = length5;
+
+      window.addEventListener('scroll', onDrawing);
+
+      function onDrawing() {
+        drawing1();
+        drawing2();
+        drawing3();
+        drawing4();
+        drawing5();
+      }
+      function drawing1() {
+        let scrollpercent =
+          (document.body.scrollTop + document.documentElement.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+
+        let draw = length1 * scrollpercent;
+
+        st1.style.strokeDashoffset = length1 - draw;
+      }
+
+      function drawing2() {
+        let scrollpercent =
+          (document.body.scrollTop + document.documentElement.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+
+        let draw = length2 * scrollpercent;
+
+        st2.style.strokeDashoffset = length2 - draw;
+      }
+      function drawing3() {
+        let scrollpercent =
+          (document.body.scrollTop + document.documentElement.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+
+        let draw = length3 * scrollpercent;
+
+        st3.style.strokeDashoffset = length3 - draw;
+      }
+      function drawing4() {
+        let scrollpercent =
+          (document.body.scrollTop + document.documentElement.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+
+        let draw = length4 * scrollpercent;
+
+        st4.style.strokeDashoffset = length4 - draw;
+      }
+      function drawing5() {
+        let scrollpercent =
+          (document.body.scrollTop + document.documentElement.scrollTop) /
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight);
+
+        let draw = length5 * scrollpercent;
+
+        st5.style.strokeDashoffset = length5 - draw;
+      }
+    </script>
+  </body>
+</html>
