@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <title>Mega Menu</title>
+    <style>
+      nav {
+        background-color: #000;
+        overflow: hidden;
+      }
+      li {
+        float: left;
+      }
+      li:hover > a,
+      li:hover .dropbtn {
+        background-color: red;
+      }
+
+      a {
+        display: block;
+        padding: 15px 20px;
+        color: #fff;
+      }
+      .dropdown {
+        overflow: hidden;
+      }
+      .dropdown:hover .dropdown-cont {
+        display: block;
+      }
+      .dropbtn {
+        padding: 15px 20px;
+        color: #fff;
+        background-color: inherit;
+      }
+      .dropdown-cont {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #eee;
+      }
+      .dropdown-cont h2 {
+        padding: 30px 20px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        background-color: red;
+      }
+      .dropdown-list {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .column {
+        width: 33%;
+      }
+      .column h3 {
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .column li {
+        float: none;
+      }
+      .column a {
+        display: block;
+        color: #000;
+      }
+      .column a:hover {
+        background-color: #ddd;
+      }
+
+      h1,
+      p {
+        margin-bottom: 20px;
+        padding: 20px 0 0 20px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .dropdown-list {
+          flex-direction: column;
+        }
+        .column {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="clearfix">
+      <ul class="nav-list">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">News</a>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Dropdown</button>
+            <div class="dropdown-cont">
+              <h2>Mega Menu</h2>
+              <div class="dropdown-list">
+                <ul class="column">
+                  <h3>Category1</h3>
+                  <li>
+                    <a href="#">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 3</a>
+                  </li>
+                </ul>
+                <ul class="column">
+                  <h3>Category2</h3>
+                  <li>
+                    <a href="#">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 3</a>
+                  </li>
+                </ul>
+                <ul class="column">
+                  <h3>Category3</h3>
+                  <li>
+                    <a href="#">Link 1</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Link 3</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <h1>Responsive Mega Menu (Full-width dropdown in navbar)</h1>
+    <p>Hover over the "Dropdown" link to see the mega menu.</p>
+    <p>Resize the browser window to see the responsive effect.</p>
+  </body>
+</html>

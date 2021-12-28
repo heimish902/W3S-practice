@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <title>Subnav</title>
+    <style>
+      nav {
+        background-color: #000;
+      }
+      li {
+        float: left;
+      }
+      li:hover {
+        background-color: red;
+      }
+      a {
+        display: block;
+        padding: 15px 20px;
+        color: #fff;
+      }
+      .dropbtn {
+        padding: 15px 20px;
+        color: #fff;
+        background-color: inherit;
+      }
+      .dropdown-cont {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: red;
+      }
+      .dropdown-cont a {
+        float: left;
+      }
+      .dropdown:hover .dropdown-cont {
+        display: block;
+      }
+
+      h1 {
+        margin: 20px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      p {
+        margin: 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="clearfix">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">
+              About
+              <i class="fa fa-sort-down"></i>
+            </button>
+            <div class="dropdown-cont">
+              <a href="#">Company</a>
+              <a href="#">Team</a>
+              <a href="#">Careers</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Services
+              <i class="fa fa-sort-down"></i>
+            </button>
+            <div class="dropdown-cont">
+              <a href="#">Bring</a>
+              <a href="#">Deliver</a>
+              <a href="#">Package</a>
+              <a href="#">Express</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Partners
+              <i class="fa fa-sort-down"></i>
+            </button>
+            <div class="dropdown-cont">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+              <a href="#">Link 4</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <h1>Subnav/dropdown menu inside a Navigation Bar</h1>
+    <p>
+      Hover over the "about", "services" or "partners" link to see the sub
+      navigation menu.
+    </p>
+  </body>
+</html>
