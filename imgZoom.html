@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create an Image Zoom</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .img-zoom-container {
+      position: relative;
+      max-width: 400px;
+    }
+    #myimage {
+      width: 100%;
+      height: 250px;
+    }
+    .img-zoom-lens {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #fff;
+    }
+    .img-zoom-result {
+      width: 100%;
+      height: 250px;
+      margin-top: 20px;
+      border: 1px solid #000;
+    }
+  </style>
+  <body>
+    <h1>Imgae Zoom</h1>
+    <p>Mouse over the image</p>
+    <div class="img-zoom-container">
+      <img id="myimage" src="images/pexels-ylanite-koppens-1693652.jpg" />
+      <div id="myresult" class="img-zoom-result"></div>
+    </div>
+
+    <script>
+      const container = document.querySelector('.img-zoom-container');
+      const img = document.querySelector('img');
+      const result = document.querySelector('.img-zoom-result');
+
+      // calculate ratio and set background properties
+      function setBackground(zoom, x, y) {
+        const cx = result.offsetWidth / zoom.offsetWidth; // 10
+        const cy = result.offsetHeight / zoom.offsetHeight; // 6.25
+
+        result.style.backgroundImage = `url(${img.src})`;
+        result.style.backgroundSize = `${img.width * cx}px ${img.height * cy}px`;
+        result.style.backgroundPosition = '-' + x * cx + 'px -' + y * cy + 'px';
+      }
+
+      function moveLens(e) {
+        const zoom = document.querySelector('.img-zoom-lens');
+        e.preventDefault();
+
+        pos = getCursorPos(e);
+
+        x = pos.x - zoom.offsetWidth / 2;
+        y = pos.y - zoom.offsetHeight / 2;
+
+        if (x > img.width - zoom.offsetWidth) {
+          x = img.width - zoom.offsetWidth;
+        }
+        if (x < 0) {
+          x = 0;
+        }
+        if (y > img.height - zoom.offsetHeight) {
+          y = img.height - zoom.offsetHeight;
+        }
+        if (y < 0) {
+          y = 0;
+        }
+
+        zoom.style.left = x + 'px';
+        zoom.style.top = y + 'px';
+
+        setBackground(zoom, x, y);
+      }
+
+      function getCursorPos(e) {
+        e = e || window.event;
+
+        const a = img.getBoundingClientRect();
+
+        x = e.pageX - a.left; // left = 28px
+        y = e.pageY - a.top; // top = 44px
+
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+
+        return { x: x, y: y };
+      }
+
+      // add lens
+      function createLens() {
+        const lens = document.createElement('div');
+        lens.classList.add('img-zoom-lens');
+        container.prepend(lens);
+
+        lens.addEventListener('mousemove', moveLens);
+        img.addEventListener('mousemove', moveLens);
+      }
+
+      createLens();
+    </script>
+  </body>
+</html>
