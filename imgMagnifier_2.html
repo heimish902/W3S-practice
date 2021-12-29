@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Magnifier Glass</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .container {
+        position: relative;
+      }
+      img {
+        width: 600px;
+        height: auto;
+      }
+      .img-glass {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid;
+        cursor: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/pexels-ylanite-koppens-1693652.jpg" alt="" id="myimage" />
+    </div>
+
+    <script>
+      const container = document.querySelector('.container');
+      const img = document.querySelector('img');
+
+      function setBackground(x, y, w, h, glass) {
+        glass.style.backgroundImage = `url('${img.src}')`;
+        glass.style.backgroundRepeat = 'no-repeat';
+        glass.style.backgroundSize = `${img.width * 3}px ${img.height * 3}px`;
+
+        glass.style.left = `${x - w}px`;
+        glass.style.top = `${y - h}px`;
+
+        glass.style.backgroundPosition = `-${x * 3 - w + 3}px -${y * 3 - h + 3}px`;
+      }
+
+      function moveMagnifier(e) {
+        const glasses = document.querySelector('.img-glass');
+
+        e.preventDefault();
+
+        const pos = getCursorPos(e);
+        let x = pos.x;
+        let y = pos.y;
+        const w = glasses.offsetWidth / 2;
+        const h = glasses.offsetHeight / 2;
+
+        if (x > img.width - w / 3) {
+          x = img.width - w / 3;
+        }
+        if (x < w / 3) {
+          x = w / 3;
+        }
+        if (y > img.height - h / 3) {
+          y = img.height - h / 3;
+        }
+        if (y < h / 3) {
+          y = h / 3;
+        }
+
+        setBackground(x, y, w, h, glasses);
+      }
+
+      function getCursorPos(e) {
+        const a = img.getBoundingClientRect();
+
+        const x = e.pageX - a.left - window.pageXOffset;
+        const y = e.pageY - a.top - window.pageYOffset;
+
+        return { x: x, y: y };
+      }
+
+      function magnify() {
+        const glass = document.createElement('div');
+        glass.classList.add('img-glass');
+
+        container.prepend(glass);
+
+        glass.addEventListener('mousemove', moveMagnifier);
+        img.addEventListener('mousemove', moveMagnifier);
+      }
+
+      magnify();
+    </script>
+  </body>
+</html>

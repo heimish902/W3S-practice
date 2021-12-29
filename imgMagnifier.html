@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Magnifier Glass</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .container {
+        position: relative;
+      }
+      img {
+        width: 600px;
+        height: auto;
+      }
+      .img-glass {
+        display: none;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid;
+        cursor: none;
+        pointer-events: none;
+      }
+      p {
+        margin: 0 0 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Image Magnifier Glass</h2>
+      <p>Mouse over the image:</p>
+      <br />
+      <p class="mouseX">mouseX : <span></span>px</p>
+      <p class="mouseY">mouseY : <span></span>px</p>
+      <p class="bgX">bgX : <span></span></p>
+      <p class="bgY">bgY : <span></span></p>
+      <img src="images/pexels-ylanite-koppens-1693652.jpg" alt="" id="myimage" />
+    </div>
+
+    <script>
+      const magnify = (function () {
+        const container = document.querySelector('.container');
+        const img = document.querySelector('img');
+        const glass = document.createElement('div');
+        const glassDimension = 100;
+
+        let isVisible = false;
+
+        glass.classList.add('img-glass');
+        glass.style.width = `${glassDimension}px`;
+        glass.style.height = `${glassDimension}px`;
+        glass.style.backgroundImage = `url(${img.src})`;
+        container.prepend(glass);
+
+        img.addEventListener('mouseover', function () {
+          glass.style.display = 'block';
+          isVisible = true;
+        });
+        img.addEventListener('mouseout', function () {
+          glass.style.display = 'none';
+          isVisible = false;
+        });
+
+        window.addEventListener('mousemove', function (e) {
+          if (isVisible) {
+            const zoom = 2; // 확대 배수
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const bgX = (100 * (mouseX - img.offsetLeft)) / img.offsetWidth;
+            const bgY = (100 * (mouseY - img.offsetTop)) / img.offsetHeight;
+
+            glass.style.left = `${mouseX - glassDimension / 2}px`;
+            glass.style.top = `${mouseY - glassDimension / 2}px`;
+
+            glass.style.backgroundSize = `${img.width * zoom}px ${img.height * zoom}px`;
+            glass.style.backgroundPosition = `${bgX}% ${bgY}%`;
+
+            document.querySelector('.mouseX span').innerText = mouseX;
+            document.querySelector('.mouseY span').innerText = mouseY;
+            document.querySelector('.bgX span').innerText = parseInt(bgX);
+            document.querySelector('.bgY span').innerText = parseInt(bgY);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
