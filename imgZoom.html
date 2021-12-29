@@ -38,6 +38,8 @@
       <img id="myimage" src="images/pexels-ylanite-koppens-1693652.jpg" />
       <div id="myresult" class="img-zoom-result"></div>
     </div>
+    <p class="pageX"></p>
+    <p class="pageY"></p>
 
     <script>
       const container = document.querySelector('.img-zoom-container');
@@ -87,11 +89,15 @@
 
         const a = img.getBoundingClientRect();
 
-        x = e.pageX - a.left; // left = 28px
-        y = e.pageY - a.top; // top = 44px
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
 
         x = x - window.pageXOffset;
         y = y - window.pageYOffset;
+
+        //print
+        document.querySelector('.pageX').innerText = e.pageX;
+        document.querySelector('.pageY').innerText = e.pageY;
 
         return { x: x, y: y };
       }
