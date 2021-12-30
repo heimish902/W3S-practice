@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <title>Filter Dropdown Menu</title>
+    <style>
+      .dropDown button {
+        padding: 10px 20px;
+        border: none;
+        color: #fff;
+        font-size: 1em;
+        background-color: #04aa6d;
+      }
+      .container {
+        display: none;
+        width: 200px;
+      }
+      .search {
+        width: 100%;
+        position: relative;
+      }
+      input {
+        width: 100%;
+        padding: 10px 30px;
+        border: 1px solid #ddd;
+        outline: none;
+      }
+      .search i {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: rgb(182, 182, 182);
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        border: 1px solid #ddd;
+        border-top: none;
+      }
+      li {
+        padding: 10px;
+        background-color: #eee;
+        list-style: none;
+      }
+      li:hover {
+        background-color: #ddd;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropDown">
+      <button type="button">
+        Dropdown
+        <i class="fas fa-sort-down"></i>
+      </button>
+      <div class="container">
+        <div class="search">
+          <input type="search" id="searchBar" placeholder="Search.." />
+          <i class="fas fa-search"></i>
+        </div>
+        <ul>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Base</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+          <li>
+            <a href="#">Custom</a>
+          </li>
+          <li>
+            <a href="#">Support</a>
+          </li>
+          <li>
+            <a href="#">Tools</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const dropbtn = document.querySelector('.dropDown button');
+      const input = document.querySelector('.search input');
+      function showCont() {
+        const container = document.querySelector('.container');
+        container.classList.toggle('show');
+      }
+
+      function filter() {
+        const value = input.value.toUpperCase();
+        const li = document.querySelectorAll('.container li');
+
+        for (let i = 0; i < li.length; i++) {
+          let link = li[i].getElementsByTagName('a')[0];
+          let textValue = link.textContent || link.innerText;
+
+          if (textValue.toUpperCase().indexOf(value) > -1) {
+            li[i].style.display = '';
+          } else {
+            li[i].style.display = 'none';
+          }
+        }
+      }
+
+      dropbtn.addEventListener('click', showCont);
+      input.addEventListener('keyup', filter);
+    </script>
+  </body>
+</html>
