@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert font</title>
+    <style>
+      @font-face {
+        font-family: 'S-CoreDream-4Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        height: 90vh;
+        font-size: 16px;
+        font-family: 'S-CoreDream-4Regular';
+        background-color: #ecf0f3;
+      }
+      .container {
+        width: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 30px;
+        background-color: #ecf0f3;
+        box-shadow: 13px 13px 20px #cdced1, -13px -13px 20px #fff;
+      }
+      h1 {
+        margin: 10px 0 30px 0;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      label {
+        margin-bottom: 5px;
+        font-size: 1em;
+      }
+      input {
+        padding: 20px 10px 10px 15px;
+        margin-bottom: 20px;
+        font-size: 1em;
+        border-radius: 15px;
+        box-shadow: inset 3px 3px 5px #cbced1, inset -5px -5px 5px #fff;
+        border: none;
+        outline: none;
+        background: rgb(247, 247, 247);
+      }
+      input[type='submit'] {
+        margin: 10px 0 20px 0;
+        padding: 10px;
+        color: #fff;
+        background-color: #09b2f0;
+        box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #fff;
+      }
+      .result_cont {
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: inset 3px 3px 5px #cbced1, inset -5px -5px 5px #fff;
+        background-color: #eee;
+      }
+      span {
+        font-size: 1.2em;
+      }
+      .result_cont p {
+        margin: 20px 0 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Convert Units</h1>
+      <form>
+        <label for="base"> Base size </label>
+        <input class="base" type="number" min="1" placeholder="16px" required />
+        <label for="PtoE"> Px to Em</label>
+        <input class="pte" type="number" min="1" step="0.1" placeholder="px to em" />
+        <label for="EtoP"> Em to Px </label>
+        <input class="etp" type="number" step="0.1" placeholder="em to px" / />
+        <input class="submit" type="submit" value="Convert" />
+      </form>
+      <div class="result_cont">
+        <span class="result"></span>
+        <span class="result_percent"></span>
+        <p class="result_size">font size</p>
+      </div>
+    </div>
+
+    <script>
+      const form = document.querySelector('form');
+      const result = document.querySelector('.result');
+      const resultPercent = document.querySelector('.result_percent');
+      const resultSize = document.querySelector('.result_size');
+
+      const input = document.querySelectorAll('input');
+
+      function convertUnit(e) {
+        e.preventDefault();
+        const base = document.querySelector('.base').value;
+        const ptoE = document.querySelector('.pte').value;
+        const etoP = document.querySelector('.etp').value;
+
+        if (ptoE == '' && etoP == '') {
+          alert('변환하려는 값을 입력해주세요!');
+          return;
+        }
+
+        if (ptoE != '' && etoP != '') {
+          alert('변환하려는 값을 하나만 입력해주세요!');
+          return;
+        }
+
+        if (ptoE != '') {
+          convertPX(ptoE, base);
+        }
+
+        if (etoP != '') {
+          ConvertEM(etoP, base);
+        }
+      }
+
+      function convertPX(ptoE, base) {
+        const convertEm = `${+ptoE / +base}`;
+        result.innerText = `${convertEm}em`;
+        resultPercent.innerText = `( ${convertEm * 100}% )`;
+        const resultSize = document.querySelector('.result_size');
+        resultSize.style.fontSize = `${convertEm}em`;
+
+        document.querySelector('.pte').value = '';
+      }
+
+      function ConvertEM(etoP, base) {
+        const convertPx = `${+etoP * +base}`;
+        result.innerText = `${convertPx}px`;
+        resultPercent.innerText = `( ${+etoP * 100}% )`;
+        resultSize.style.fontSize = `${convertPx}px`;
+
+        document.querySelector('.etp').value = '';
+      }
+
+      form.addEventListener('submit', convertUnit);
+    </script>
+  </body>
+</html>
