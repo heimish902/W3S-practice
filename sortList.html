@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sort a List</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        height: 100vh;
+        place-items: center;
+        overflow: hidden;
+      }
+      .sort-container {
+        width: 300px;
+        padding: 30px 20px;
+        border-radius: 10px;
+        background-color: #eee;
+      }
+      button {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        background-color: #444;
+        box-shadow: 3px 3px 3px rgb(211, 211, 211), -3px -3px 3px #fff;
+        cursor: pointer;
+      }
+      ul {
+        margin-top: 30px;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+        padding: 10px;
+        border-bottom: 1px solid rgb(199, 197, 197);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sort-container">
+      <div class="buttons">
+        <button>Sort</button>
+        <button>Reverse</button>
+      </div>
+      <ul>
+        <li>Oslo</li>
+        <li>Stockholm</li>
+        <li>Helsinki</li>
+        <li>Berlin</li>
+        <li>Rome</li>
+        <li>Madrid</li>
+      </ul>
+    </div>
+
+    <script>
+      const sortBtns = document.querySelector('.buttons');
+      const sortBtn = sortBtns.querySelectorAll('button');
+      const li = document.querySelectorAll('li');
+      const list = [];
+
+      li.forEach((el) => {
+        list.push(el.innerText);
+      });
+
+      // 원래대로
+      function origianl() {
+        data(list);
+      }
+
+      // 이름 순 정렬
+      function sortList() {
+        list.sort(function (a, b) {
+          if (a < b == true) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+        data(list);
+      }
+
+      // 이름 역순 정렬
+      function reverseSort() {
+        list.sort(function (a, b) {
+          if (a < b == true) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
+        data(list);
+      }
+
+      // 클릭한 버튼에 따라 다른 함수 실행
+      function sort(e) {
+        if (e.target == sortBtn[0]) {
+          sortList();
+        } else if (e.target == sortBtn[1]) {
+          reverseSort();
+        }
+      }
+
+      // 정렬된 데이터 옮기기
+      function data(list) {
+        for (let i = 0; i < li.length; i++) {
+          document.querySelectorAll('li')[i].textContent = list[i];
+        }
+      }
+
+      sortBtns.addEventListener('click', sort);
+    </script>
+  </body>
+</html>
